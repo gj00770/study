@@ -66,15 +66,8 @@ setTimeout(function() {
 
 class UserStorage{
     loginUser(id, password, onSucuccess, onError){
-        // setTimeout(()=>{
-        //     if(
-        //         id === 'rion' && password === '1234'
-        //         id === 'coder' & password === '2222'       
-        //      )
-        //      {
-
-        //         }
-        // },2000)
+      
+        
         setTimeout(()=>{
             if(
                 id === 'rion' && password === '1234' ||
