@@ -17,8 +17,8 @@
 //  - pullSled() (함수)
 
 let animal = {
-    name= 'asdasd',
-    age = 32,
+    name: 'asdasd',
+    age : 32,
 
     run(){
         console.log('running')
@@ -28,5 +28,36 @@ let animal = {
     }
 
 }
-rabbit.__proto__ = animal;
-console.log(rabbit);
+ let dog ={
+ 
+ color:'red',
+ jump(){
+ console.log('dunk')
+ }
+} 
+dog.__proto__ = animal;
+
+let cat = {
+    color:'blue',
+    scratch(){
+        console.log('scratch')
+    }    
+}
+
+cat.__proto__ = animal;
+
+
+let husky = {
+    size:'32',
+    pullSled(){
+        console.log('running')
+    }    
+}
+
+husky.__proto__ = dog;
+
+
+
+console.log(dog);
+console.log(cat);
+console.log(husky);
