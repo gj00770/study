@@ -115,4 +115,22 @@ userStorage.loginUser(
         console.log(error)
     }
 )
+//catch after then
+
+
+new Promise((resolve,reject)=>{
+setTimrout(()=>{
+reject(new Error('err'))
+
+})
+}).then(res =>{
+ console.log('firstRes', res)
+}).
+catch(err => {
+ console.log(err);
+ return '123'
+ 
+}).then(res =>{
+console.log(res, '234')
+})
 
