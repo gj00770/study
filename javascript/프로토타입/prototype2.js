@@ -20,93 +20,100 @@
 
 class Animal {
 
-    constructor(name,age) {
-      this.age = age;
-      this.name = name;
-    }
-  
-  
-    sleep() {
-      alert(`${this.name}가 zzzzz.`);
-    }
-  
+  constructor(name, age) {
+    this.age = age;
+    this.name = name;
   }
 
 
-  class Dog  extends Animal{
+  sleep() {
+    alert(`${this.name}가 zzzzz.`);
+  }
+
+}
+
+
+class Dog extends Animal {
   constructor(name, age, color) {
-    super(name,age);
+    super(name, age);
     this.color = color;
   }
-    jump() {
-        alert(`${this.name}가 점프합니다.`); 
-    }
+  jump() {
+    alert(`${this.name}가 점프합니다.`);
+  }
+}
+
+
+
+class Cat extends Animal {
+
+  constructor(name, age, color) {
+    super(name, age);
+    this.color = color;
   }
 
 
-  
-  class Cat extends Animal {
-
-    constructor(name, age, color) {
-        super(name,age);
-        this.color = color;
-    }
-
-
-    scratch() {
-      alert(`${this.name}가 긁습니다!`);
-    }
-  
-   
+  scratch() {
+    alert(`${this.name}가 긁습니다!`);
   }
 
-  class Husky extends Dog {
 
-    constructor(name, age, color,size) {
-        super(name,age,color);
-        this.size = size;
-    }
+}
 
+class Husky extends Dog {
 
-    pullSled() {
-      alert(`${this.name}가 달립니다.!`);
-    }
-  
-   
+  constructor(name, age, color, size) {
+    super(name, age, color);
+    this.size = size;
   }
+
+
+  pullSled() {
+    alert(`${this.name}가 달립니다.!`);
+  }
+
+
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 
-  let dog = new Dog("bixy",3,"red");
-  let husky = new Husky("bixy",3,"red","3.2ft");
-  console.log(dog);
-  console.log(husky)
-  husky.pullSled();
-  
-  
-
-
-
-
-
-
-
-  function Animal(name,age) {
-    this.name = name;
-    this.age = age;
-    this.run = function (){
+function Animal(name, age) {
+  this.name = name;
+  this.age = age;
+  this.run = function () {
     console.log(`${this.name} run`);
-    }
-    
-    this.sleep = function (){
-    console.log(`${this.name} sleep`);
-    }
   }
-  
-  const Dog = new Animal("bicky", 3);
-  
-  //console.log(dog.sleep);
-  
-  dog.sleep()
-  dog.run()
+
+  this.sleep = function () {
+    console.log(`${this.name} sleep`);
+  }
+}
+
+function Dog(color) {
+  this.color = color;
+  this.jump = function () {
+    alert(`${this.name}가 점프합니다.`);
+  }
+
+}
+Dog.prototype = new Animal("bicky", 3);
+
+const dog = new Dog('red');
+
+
+function Cat(color) {
+  this.color = color;
+  this.scratch = function () {
+    alert(`${this.name}가 긁습니다!`);
+  }
+
+}
+
+Cat.prototype = new Animal("bicky", 3);
+
+
+console.log(dog);
+
+dog.sleep()
+dog.run()
