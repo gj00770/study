@@ -83,6 +83,7 @@ function Animal(name, age) {
   this.age = age;
   this.run = function () {
     console.log(`${this.name} run`);
+    this.age -= 1;
   }
 
   this.sleep = function () {
@@ -90,17 +91,20 @@ function Animal(name, age) {
   }
 }
 
-function Dog(color) {
+function Dog(name, age, color) {
   this.color = color;
   this.jump = function () {
     alert(`${this.name}가 점프합니다.`);
   }
 
+  Object.setPrototypeOf(this, new Animal('fefe', 3))
 }
-Dog.prototype = new Animal("bicky", 3);
 
-const dog = new Dog('red');
+const dog = new Dog('ewee', 3, 'red');
+dog.run()
 
+const dog2 = new Dog('red');
+dog2.run()
 
 function Cat(color) {
   this.color = color;
