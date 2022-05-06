@@ -111,3 +111,63 @@ class Animal {
   
   rabbit.run(5); // 흰 토끼가 속도 5로 달립니다.
   rabbit.stop(); // 흰 토끼가 멈췄습니다. 흰 토끼가 숨었습니다!
+
+
+
+  //생성자 오버라이딩 
+
+  class Animal {
+    constructor(name) {
+      this.speed = 0;
+      this.name = name;
+    }
+    // ...
+  }
+  
+  class Rabbit extends Animal {
+  
+    constructor(name, earLength) {
+      this.speed = 0;
+      this.name = name;
+      this.earLength = earLength;
+    }
+  
+    // ...
+  }
+  
+  // 동작하지 않습니다!
+  let rabbit = new Rabbit("흰 토끼", 10); // ReferenceError: Must call super constructor in derived class before accessing 'this' or returning from derived constructor
+
+  // 일반 클래스가 new와 함께 실행되면, 빈 객체가 만들어지고 this에 이 객체를 할당합니다.
+// 반면, 상속 클래스의 생성자 함수가 실행되면, 일반 클래스에서 일어난 일이 일어나지 않습니다.
+//  상속 클래스의 생성자 함수는 빈 객체를 만들고 this에 이 객체를 할당하는 일을 부모 클래스의 생성자가
+//   처리해주길 기대합니다.
+// 그래서 super를 사용하여 부모객체를 실행해줍니다.
+
+
+class Animal {
+
+  constructor(name) {
+    this.speed = 0;
+    this.name = name;
+  }
+
+  // ...
+}
+
+class Rabbit extends Animal {
+
+  constructor(name, earLength) {
+    super(name);
+    this.earLength = earLength;
+  }
+
+  // ...
+}
+
+// 이제 에러 없이 동작합니다.
+let rabbit = new Rabbit("흰 토끼", 10);
+alert(rabbit.name); // 흰 토끼
+alert(rabbit.earLength); // 10
+
+
