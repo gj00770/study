@@ -9,54 +9,38 @@
 
 // 힌트) 다형성, 추상화
 
+class IPhone {
 
-interface Phone {
-	call(): void,
-	search(): void
-
-
-}
-
-class IPhone implements phone {
-
-	call() {
+	callWithIphone() {
 		console.log('전화하기')
 	}
 
-	search() {
+	searchWithIphone() {
 		console.log('검색')
 	}
-
+	
 }
 
-class Galaxy implements phone {
+class Galaxy {
 
-	call() {
+	callWithGalaxy() {
 		console.log('전화하기')
 	}
 
-	search() {
+	searchWithGalaxy() {
 		console.log('검색')
 	}
-
-
-}
-const iphone = new IPhone();
-const galaxy = new Galaxy();
-function callAndSearch(phone: phone) {
-	phone.call();
-	phone.search();
+	
 }
 
-callAndSearch(iphone);
-
-
-
-
-
-
-
-
+function callAndSearch() {
+	const iphone = new IPhone();
+	const galaxy = new Galaxy();
+	iphone.callWithIphone();
+	iphone.searchWithIphone();
+	galaxy.callWithGalaxy();
+     galaxy.searchWithGalaxy();
+}
 
 
 
@@ -65,11 +49,11 @@ callAndSearch(iphone);
 
 
 class Phone {
-	constructor(height, width) {
-		this.height = height;
-		this.width = width;
-	}
-	callWithGalaxy() {
+    constructor(height, width) {
+        this.height = height;
+        this.width = width;
+    }
+    callWithGalaxy() {
 		console.log('전화하기')
 	}
 
@@ -81,27 +65,30 @@ class Phone {
 class Galaxy extends Phone {
 
 	constructor(name) {
-		super(name); // super class 생성자를 호출하여 name 매개변수 전달
-	}
+        super(name); // super class 생성자를 호출하여 name 매개변수 전달
+    }
 
 	searchWithGalaxy() {
 		console.log('검색')
 	}
-
+	
 }
 
 
-//import React, { ReactNode, useEffect } from 'react';
+
+
+
+
+
+
+
+
+
+import React, { ReactNode, useEffect } from 'react';
 
 import { render } from "react-dom";
 
-import React, {
-	ReactNode,
-	useEffect,
-	useState,
-	useCallback,
-	useMemo
-} from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 
 function Container({ children }: { children: ReactNode }) {
 	console.log(children);
@@ -109,11 +96,6 @@ function Container({ children }: { children: ReactNode }) {
 }
 
 const ClearButton = React.memo(function (props) {
-	//	const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
-	//	{a:1 , b:2}
-	//	{a:1 , b:2}
-	console.log("hi");
-
 	return (
 		<button
 			disabled={props.disabled}
@@ -125,29 +107,22 @@ const ClearButton = React.memo(function (props) {
 
 function App() {
 	const [value, setValue] = useState(0);
-	const teest = useMemo(() => {
-		return { a: 1, b: 1 }
-	})
-	const handleClick = useCallback((value: number) => {
+
+	const handleClick = (value: number) => {
 		setValue(value);
-	}, []);
+	};
 
 	useEffect(() => {
-		const intervalId = setInterval(() => setValue((prev) => prev + 1), 1000);
+		const intervalId = setInterval(console.log, 1000);
 		return () => {
 			clearInterval(intervalId);
 		};
-	}, []);
+	}, [value, Container]);
 
 	return (
 		<div>
 			<Container>
-				<ClearButton
-					value={0}
-					disabled={value === 0}
-					test={teest}
-					onClick={handleClick}
-				/>
+				<ClearButton value={0} disabled={value === 0} onClick={handleClick} />
 				<ClearButton value={1} disabled={value === 1} onClick={handleClick} />
 			</Container>
 		</div>
