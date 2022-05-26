@@ -112,18 +112,24 @@ sideEffect를 줄이기위함
 
     ````js 
 
-     class  figure.....
+     interface  figure{width :num , height:num , display():void} .....  // OPC LSP 
 
-    if(dot === 3){
-        Triangle trainglr = new Traingle(3, 10 );
+     
+    class  triange extends figure
+    class rectangle extends figure
+
+
+
+    if(dot === 3){  //ren
+        const triangle = new Traingle(3, 10 ); /// 자식 class의 인스턴스? 
         render(triangle);
     }else if(dot === 4){
-        Rectangle rectangel = new Rectangel(4,20);
+        const rectangle = new rectangle(4,20);
         render(rectangle)
     }
-     function render(item: figure){//
+     function render(item: figure){//LSP 
         for(let i = 0 ; i < item.getdot(); i++){
-            ritem.display();
+            ritem.display();  // 
         }
     }
     js````
