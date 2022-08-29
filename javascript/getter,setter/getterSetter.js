@@ -6,7 +6,7 @@
 //     return `${this.name} ${this.surname}`;
 //   },
 
-//   setFullName(value) {
+//   setFullName(value) {4
 //     [this.name, this.surname] = value.split(" ");
 //   }
 // };
